@@ -1,8 +1,4 @@
 #!/bin/bash
-#====================================================
-#	SCRIPT: LIMITER NZX NET
-#	DESENVOLVIDO POR:	JEFFSSH
-#====================================================
 clear
 database="/root/usuarios.db"
 fun_multilogin() {
