@@ -753,15 +753,7 @@ SCOLOR='\033[0m'
 				verif_ptrs $porta
 				echo -e "\n\033[1;32mInstalando o ssl tunnel !\033[1;37m"
 				echo ""
-apt-get install stunnel4 -y
-cat stunnel.crt stunnel.key > stunnel.pem 
-mv stunnel.pem /etc/stunnel/
-sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
-service stunnel4 restart 
-rm -rf /etc/ger-frm/stunnel.crt 
-rm -rf /etc/ger-frm/stunnel.key
-rm -rf /root/stunnel.crt
-rm -rf /root/stunnel.key
+				apt-get install stunnel4 -y
 				echo -e "\n\033[1;32mConfigurando o ssl tunnel !\033[0m"
 				echo ""
 				ssl_conf() {
@@ -2116,7 +2108,8 @@ exit 0' >$RCLOCAL
 [\033[1;36m08\033[1;31m] \033[1;37m• \033[1;37mChisel $sts8\033[1;31m
 [\033[1;36m09\033[1;31m] \033[1;37m• \033[1;37mSlowdns $sts9\033[1;31m
 [\033[1;36m10\033[1;31m] \033[1;37m• \033[1;37mV2ray $xv2ray\033[1;31m
-[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;37mTrojan-Go $trojansts\033[1;31m
+[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;37mTrojan-Go $trojansts\033[1;37m
+[\033[1;36m12\033[1;31m] \033[1;37m• \033[1;37mWebsocket - Corretor $sts3\033[1;37m
 [\033[1;36m00\033[1;31m] \033[1;37m• \033[1;37mMenu \033[1;32m<\033[1;37m<\033[1;31m< \033[1;31m"
 			echo ""
 			echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -2159,7 +2152,10 @@ exit 0' >$RCLOCAL
                                 ;; 	
             11 | 11)
 				trojan-go
-				;;           
+				;;    
+			12 | 12)
+				websocket.sh
+				;;
             0 | 00)
 				menu
 				;;
