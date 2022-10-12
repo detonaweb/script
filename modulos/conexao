@@ -688,7 +688,6 @@ SCOLOR='\033[0m'
 			[[ "$resposta" = '2' ]] && {
 				echo -e "\033[1;32mRemovendo o  ssl tunnel !\033[0m"
 				del_ssl() {
-					pkill stunnel4
 					service stunnel4 stop
 					apt-get remove stunnel4 -y
 					apt-get autoremove stunnel4 -y
@@ -755,9 +754,6 @@ SCOLOR='\033[0m'
 				echo -e "\n\033[1;32mInstalando o ssl tunnel !\033[1;37m"
 				echo ""
 apt-get install stunnel4 -y
-echo -e "client = no\n[SSL]\ncert = /etc/stunnel/stunnel.pem\naccept = 443 \nconnect = 127.0.0.1:80" > /etc/stunnel/stunnel.conf
-openssl genrsa -out stunnel.key 2048 > /dev/null 2>&1
-(echo "" ; echo "" ; echo "" ; echo "" ; echo "" ; echo "" ; echo "@cloudflare" )|openssl req -new -key stunnel.key -x509 -days 1000 -out stunnel.crt 
 cat stunnel.crt stunnel.key > stunnel.pem 
 mv stunnel.pem /etc/stunnel/
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
@@ -1523,7 +1519,6 @@ exit 0' >$RCLOCAL
 				echo -e "\033[1;32mDesativando o proxy socks\033[1;37m"
 				echo ""
 				fun_bar 'fun_socksoff'
-				pkill python
 				echo ""
 				echo -e "\033[1;32mProxy socks desativado com sucesso!\033[1;37m"
 				sleep 3
@@ -1579,7 +1574,6 @@ exit 0' >$RCLOCAL
 				echo -e "\033[1;32mDesativando o websocket\033[1;37m"
 				echo ""
 				fun_bar 'fun_wssocksoff'
-				pkill python
 				echo ""
 				echo -e "\033[1;32mWebsocket desativado com sucesso!\033[1;37m"
 				sleep 3
