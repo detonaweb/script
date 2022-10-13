@@ -470,36 +470,6 @@ SCOLOR='\033[0m'
 			}
 		fi
 	}
-        fun_v2rayins() {
-			clear
-	        v2rayinst(){
-	            source <(curl -sL https://raw.githubusercontent.com/ogenio/SSHPLUS/master/Modulos/v2ray)
-                    sleep 6
-	        }
-	        if netstat -tunlp |grep v2ray 1> /dev/null 2> /dev/null; then
-	            echo -e "\E[44;1;37m            INSTALADOR V2RAY             \E[0m"
-	            echo -e "\n${YELLOW}V2RAY JÁ ESTÁ INSTALADO\nDESEJA REINSTALAR? ${SCOLOR}\n"
-	            echo -ne "${GREEN}DESEJA CONTINUAR A REINSTALAÇÃO ? ${YELLOW}[s/n]:${SCOLOR} "
-	            read resp
-	            [[ "$resp" != @(s|sim|S|SIM) ]] && {
-	                echo -e "\n${RED}Retornando...${SCOLOR}"
-	                sleep 2
-	                conexao
-	            }
-	            v2rayinst
-	        else
-	            echo -e "\E[44;1;37m            INSTALADOR V2RAY             \E[0m"
-	            echo -e "\n${YELLOW}ESTEJA CIENTE QUE ESSE METODO É INSTAVEL\nFIQUE CIENTE DOS RISCOS ! ${SCOLOR}\n"
-	            echo -ne "${GREEN}DESEJA CONTINUAR A INSTALACAO ? ${YELLOW}[s/n]:${SCOLOR} "
-	            read resp
-	            [[ "$resp" != @(s|sim|S|SIM) ]] && {
-	                echo -e "\n${RED}Retornando...${SCOLOR}"
-	                sleep 2
-	                conexao
-	            }
-	            v2rayinst
-            fi
-        }
     	fun_chisel() {
 		clear
 		echo -e "\E[44;1;37m            GERENCIAR CHISEL             \E[0m"
@@ -2104,11 +2074,6 @@ exit 0' >$RCLOCAL
 			} || {
 				trojansts="\033[1;31m○ "
 			}
-			[[ "$(netstat -tunlp | grep 'v2ray' | wc -l)" != '0' ]] && {
-				xv2ray="\033[1;32m◉ "
-			} || {
-				xv2ray="\033[1;31m○ "
-			}
 			echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 			echo ""
 			echo -e "\033[1;31m[\033[1;36m01\033[1;31m] \033[1;37m• \033[1;37mOpenssh $sts6\033[1;31m
@@ -2120,9 +2085,8 @@ exit 0' >$RCLOCAL
 [\033[1;36m07\033[1;31m] \033[1;37m• \033[1;37mSslh Multiplex $sts7\033[1;31m
 [\033[1;36m08\033[1;31m] \033[1;37m• \033[1;37mChisel $sts8\033[1;31m
 [\033[1;36m09\033[1;31m] \033[1;37m• \033[1;37mSlowdns $sts9\033[1;31m
-[\033[1;36m10\033[1;31m] \033[1;37m• \033[1;37mV2ray $xv2ray\033[1;31m
-[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;37mTrojan-Go $trojansts\033[1;31m
-[\033[1;36m12\033[1;31m] \033[1;37m• \033[1;37mWebsocket - Corretor $sts3\033[1;31m
+[\033[1;36m10\033[1;31m] \033[1;37m• \033[1;37mTrojan-Go $trojansts\033[1;31m
+[\033[1;36m11\033[1;31m] \033[1;37m• \033[1;37mWebsocket - Corretor $sts3\033[1;31m
 [\033[1;36m00\033[1;31m] \033[1;37m• \033[1;37mMenu \033[1;32m<\033[1;37m<\033[1;31m< \033[1;31m"
 			echo ""
 			echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -2161,12 +2125,9 @@ exit 0' >$RCLOCAL
 				slowdns
 				;;
 		    10 | 10)
-				v2raymanager
-				;; 	
-            11 | 11)
 				trojan-go
 				;;          
-            12 | 12)
+            11 | 11)
 				websocket.sh
     			;;   
             0 | 00)
