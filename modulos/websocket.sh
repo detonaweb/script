@@ -10,7 +10,7 @@ fun_bar () {
           touch $HOME/fim
           ) > /dev/null 2>&1 &
           tput civis
-          echo -e "\033[1;31m---------------------------------------------------\033[1;37m"
+		  echo -e "\033[1;31m---------------------------------------------------\033[1;37m"
           echo -ne "${col7}    AGUARDE..\033[1;35m["
           while true; do
           for((i=0; i<18; i++)); do
@@ -26,18 +26,17 @@ fun_bar () {
          done
          echo -e "\033[1;35m]\033[1;37m -\033[1;32m INSTALADO !\033[1;37m"
          tput cnorm
-         echo -e "\033[1;31m---------------------------------------------------\033[1;37m"
+		 echo -e "\033[1;31m---------------------------------------------------\033[1;37m"
         }
         
 
 clear&&clear
-echo -e "\033[1;37m◆═════════════════════════════════════════════════════════════◆\033[0m"
-echo -e "\E[44;1;37m                  GERENCIAR WEBSOCKET MULTIPLEX                \E[0m"
-echo -e "\033[1;37m◆═════════════════════════════════════════════════════════════◆\033[0m"
-echo ""
-echo -e "\033[1;31m• \033[1;33mWEBSOCKET MULTIPLEX USARA A PORTA 80 e 443!\033[0m"
-echo ""
-echo -e "\033[1;33m     INSTALANDO WEBSOCKET MULTIPLEX... "
+echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
+echo -e "\033[1;32m             ALFAINTERNET WEBSOCKET SSH "
+echo -e "\033[1;31m———————————————————————————————————————————————————\033[1;37m"
+echo -e "\033[1;37m      WEBSOCKET SSH USARA A PORTA 80 e 443"
+echo
+echo -e "\033[1;33m                 INSTALANDO SSL... "
 inst_ssl () {
 
 apt-get install stunnel4 -y
@@ -55,11 +54,12 @@ rm -rf /root/stunnel.key
 
 }
 fun_bar 'inst_ssl'
+echo -e "\033[1;33m                 CONFIGURANDO SSL.. "
 fun_bar 'inst_ssl'
 read -p "  STATUS DE CONEXÃO :" msgbanner
 [[ "$msgbanner" = "" ]]&& msgbanner="SSL + Pay"
 echo 
-echo -e "\033[1;33m    CONFIGURANDO PYTHON.. "
+echo -e "\033[1;33m                 CONFIGURANDO PYTHON.. "
 inst_py () {
 
 pkill -f 80
@@ -347,3 +347,6 @@ rm -rf proxy.py
 echo -e "                 INSTALAÇÃO CONCLUIDA "
 
 echo 
+
+
+
