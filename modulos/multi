@@ -1,0 +1,44 @@
+barra="\033[0m\e[34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo "/root/multi.sh" > /bin/mko && chmod +x /bin/mko > /dev/null 2>&1
+
+##SCRIPTS A INSTALAR
+
+syncpw () {
+      bash <(wget -qO- sshplus.xyz/scripts/utilitarios/syncpainel/inst)
+}
+
+while true $x != "ok"
+do
+clear
+echo -e "\e[44;1;37m                    Ferramentas                   \e[0m"
+echo -e "\033[1;31m  [\033[1;36m 01 \033[1;31m] \033[1;37m• \033[1;37mSincronizar Painel Web 
+\033[1;31m  [\033[1;36m 02 \033[1;31m] \033[1;37m• \033[1;37mCheckUser Conecta4G
+\033[1;31m  [\033[1;36m 03 \033[1;31m] \033[1;37m• \033[1;37mRecursos CheckUser 
+\033[1;31m  [\033[1;36m 00 \033[1;31m] \033[1;37m• \033[1;37mMenu"
+echo ""
+echo -ne "\033[1;32m o que deseja fazer \033[1;37m?\033[1;31m?\033[1;37m : "; read x
+
+case "$x" in 
+	1 | 01)
+   clear
+	syncpw
+	;;
+	2 | 02)
+	clear
+	initcheck
+	;;
+	3 | 03)
+   clear
+	instcheck
+	;;
+   0 | 00)
+   menu
+   clear
+   ;;
+   *)
+   echo -e "\n\033[1;31mOpcao invalida !\033[0m"
+   sleep 2
+esac
+done
+}
+#fim
