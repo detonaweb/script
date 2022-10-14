@@ -18,7 +18,7 @@ lightgray='\033[0;37m'
 darkgray='\033[1;30m'
 lightred='\033[1;31m'
 lightgreen='\033[1;32m'
-yellow='\033[1;33m'
+yellow='\033[1;37m'
 lightblue='\033[1;34m'
 lightpurple='\033[1;35m'
 lightcyan='\033[1;36m'
@@ -26,10 +26,10 @@ white='\033[1;37m'
 clear
 echo -e "\E[44;1;37m            BLOQUEADOR WEBSITE              \E[0m"
 echo""
-echo -e "\033[1;31m• \033[1;33mBloqueio para tunelamento ssh (vpn)!\033[0m"
+echo -e "\033[1;31m• \033[1;37mBloqueio para tunelamento ssh (vpn)!\033[0m"
 echo ""
 echo -e "\033[01;34m============================================================"
-echo -e "\033[1;33m Use as string como \033[1;37m(www.google.com) \033[1;33mpara bloquear!"
+echo -e "\033[1;37m Use as string como \033[1;37m(www.google.com) \033[1;37mpara bloquear!"
 echo -e "\033[01;34m============================================================"
 tput setaf 7 ; tput bold ; printf '%s' "[1]•>"; tput setaf 3 ; printf '%s' " Bloquear site."  ; echo ""
 tput setaf 7 ; tput bold ; printf '%s' "[2]•>"; tput setaf 3 ; printf '%s' " Desbloquear site." ;  echo ""
