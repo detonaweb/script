@@ -1,5 +1,6 @@
 #!/bin/bash
 clear
+[[ $(awk -F" " '{print $2}' /usr/lib/nzx) != "@Niltonjuniornzx" ]] && exit 0
 echo -e "\E[44;1;37m               INFORMACOES DO VPS                 \E[0m"
 echo ""
 if [ -f /etc/lsb-release ]

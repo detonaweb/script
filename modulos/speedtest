@@ -1,5 +1,7 @@
-#!/bin/bash 
-sleep 2
+#!/bin/bash
+clear
+[[ $(awk -F" " '{print $2}' /usr/lib/nzx) != "@Niltonjuniornzx" ]] && exit 0
+sleep 1
 clear
 echo ""
 echo "--------------------------------------------------------------------"

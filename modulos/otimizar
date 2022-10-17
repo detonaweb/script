@@ -1,4 +1,6 @@
 #!/bin/bash
+clear
+[[ $(awk -F" " '{print $2}' /usr/lib/nzx) != "@Niltonjuniornzx" ]] && exit 0
 fun_bar() {
 	comando[0]="$1"
 	comando[1]="$2"
@@ -9,7 +11,7 @@ fun_bar() {
 		touch $HOME/fim
 	) >/dev/null 2>&1 &
 	tput civis
-	echo -ne "     \033[1;37mAguarde \033[1;37m- \033[1;37m["
+	echo -ne "     \033[1;37mAGUARDE \033[1;37m- \033[1;37m["
 	while true; do
 		for ((i = 0; i < 18; i++)); do
 			echo -ne "\033[1;31m#"
@@ -20,7 +22,7 @@ fun_bar() {
 		sleep 1s
 		tput cuu1
 		tput dl1
-		echo -ne "     \033[1;37mAguarde \033[1;37m- \033[1;37m["
+		echo -ne "     \033[1;37mAGUARDE \033[1;37m- \033[1;37m["
 	done
 	echo -e "\033[1;37m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 	tput cnorm
@@ -87,7 +89,7 @@ function aguarde() {
 		done
 		tput cnorm
 	}
-	echo -ne "\033[1;37mLimpando memoria \033[1;32mRam \033[1;37me \033[1;32mSwap\033[1;32m.\033[1;37m.\033[1;31m. \033[1;37m"
+	echo -ne "\033[1;37mLIMPANDO MEMORIA \033[1;32mRAM \033[1;37me \033[1;32mSWAP\033[1;32m.\033[1;37m.\033[1;31m. \033[1;37m"
 	helice
 	echo -e "\e[1DOk"
 }

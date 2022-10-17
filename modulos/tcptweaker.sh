@@ -1,6 +1,8 @@
 #!/bin/bash
+clear
+[[ $(awk -F" " '{print $2}' /usr/lib/nzx) != "@Niltonjuniornzx" ]] && exit 0
 echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\033[\E[44;1;37m                      TCP TWEAKER                      \E[0m"
+echo -e "\E[44;1;37m                      TCP TWEAKER                      \E[0m"
 echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 if [[ `grep -c "^#PH56" /etc/sysctl.conf` -eq 1 ]]
 then

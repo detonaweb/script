@@ -1,9 +1,13 @@
 #!/bin/bash
+clear
+[[ $(awk -F" " '{print $2}' /usr/lib/nzx) != "@Niltonjuniornzx" ]] && exit 0
 IP=$(cat /etc/IP)
 if [ ! -d /etc/SSHPlus/userteste ]; then
 mkdir /etc/SSHPlus/userteste
 fi
+echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-15s\n' "Criar usuario teste" ; tput sgr0
+echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 [ "$(ls -A /etc/SSHPlus/userteste)" ] && echo -e "\033[1;32mTeste Ativo!\033[1;37m" || echo -e "\033[1;31mNenhum test ativo!\033[0m"
 echo ""

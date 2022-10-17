@@ -1,4 +1,6 @@
 #!/bin/bash
+clear
+[[ $(awk -F" " '{print $2}' /usr/lib/nzx) != "@Niltonjuniornzx" ]] && exit 0
 [[ ! -d /etc/SSHPlus ]] && exit 0
 [[ ! -d /etc/bot ]] && exit 0
 source ShellBot.sh
@@ -6,6 +8,7 @@ api_bot=$1
 id_admin=$2
 [[ -z $api_bot ]] && exit 0
 [[ -z $id_admin ]] && exit 0
+[[ ! -e /usr/lib/licence ]] && exit 0
 ativos='/etc/bot/lista_ativos'
 suspensos='/etc/bot/lista_suspensos'
 ShellBot.init --token "$api_bot" --monitor --return map --flush
@@ -835,7 +838,7 @@ speed_test() {
     rm -rf $HOME/speed >/dev/null 2>&1
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
         --text "🚀 TESTANDO VELOCIDADE DO SERVIDOR"
-    speedtest --share --secure > speed
+    speedtest --share >speed
     png=$(cat speed | sed -n '5 p' | awk -F : {'print $NF'})
     down=$(cat speed | sed -n '7 p' | awk -F : {'print $NF'})
     upl=$(cat speed | sed -n '9 p' | awk -F : {'print $NF'})
@@ -878,8 +881,6 @@ sobremim() {
     msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
     msg+="<b>🤖 BOT VPS MANAGER 🤖</b>\n"
     msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
-    msg+="<b>Desenvolvido por:</b> @nzx_on\n"
-    msg+="<b>Canal Oficial:</b> @SSHPlus\n\n"
     msg+="Fui criado com o propósito de fornecer informações e ferramentas para gestão VPN em servidores 🐧 GNU/Linux 🐧.\n\n"
     msg+="<b>Menu:</b> /menu\n"
     ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
@@ -944,6 +945,8 @@ fun_teste() {
     dir_teste="/etc/bot/revenda/${message_from_username}/usuarios/$usuario"
     cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 	#!/bin/bash
+clear
+[[ $(awk -F" " '{print $2}' /usr/lib/licence) != "@nzx" ]] && exit 0
 	# USUARIO TESTE
 	[[ \$(ps -u "$usuario" | grep -c sshd) != '0' ]] && pkill -u $usuario
 	userdel --force $usuario
@@ -959,13 +962,13 @@ fun_teste() {
         for arqv in $(ls /etc/bot/arquivos); do
             ShellBot.sendDocument --chat_id ${message_from_id[$id]} \
                 --document "@/etc/bot/arquivos/$arqv" \
-                --caption "$(echo -e "✅ Criado com sucesso ✅\n\nUSUARIO: <code>$usuario</code>\nSENHA: <code>1234</code>\n\n⏳ Expira em: $t_time $hrs")" \
+                --caption "$(echo -e "✅ CRIADO COM SUCESSO ✅\n\nUSUARIO: <code>$usuario</code>\nSENHA: <code>1234</code>\n\n⏳ Expira em: $t_time $hrs")" \
                 --parse_mode html
         done
         return 0
     } || {
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-            --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nIP: $(cat /etc/IP)\nUSUARIO: <code>$usuario</code>\nSENHA: <code>1234</code>\n\n⏳ Expira em: $t_time $hrs")" \
+            --text "$(echo -e "✅ <b>CRIADO COM SUCESSO</b> ✅\n\nUSUARIO: <code>$usuario</code>\nSENHA: <code>1234</code>\n\n⏳ Expira em: $t_time $hrs")" \
             --parse_mode html
         return 0
     }
@@ -1247,6 +1250,15 @@ restaure_backup() {
         return 0
     }
 }
+msg_bot() {
+    local msg
+    msg="🤖 \n\n"
+    ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+        --text "$(echo -e $msg)" \
+        --parse_mode html
+    return 0
+}
+
 msg_bem_vindo() {
     local msg
     msg="✌️😃 Ola <b>${message_from_first_name[$id]}</b>\n\nSEJA BEM VINDO(a)\n\n"
@@ -1868,6 +1880,7 @@ while :; do
                     :
                     #comandos
                     comando=(${message_text[$id]})
+					[[ "${comando[0]}" = "/start" ]] && msg_bot
                     [[ "${comando[0]}" = "/start" ]] && msg_bem_vindo
                     [[ "${comando[0]}" = "/menu" ]] && fun_menu
                     [[ "${comando[0]}" = "/info" ]] && infouserbot
@@ -1990,7 +2003,7 @@ while :; do
                             --reply_markup "$(ShellBot.ForceReply)"
                     } || {
                         ShellBot.sendMessage --chat_id ${message_from_id[$id]} \
-                            --text "<b>✅ CRIADO COM SUCESSO ✅</b>\n\nIP: $(cat /etc/IP)\nUSUARIO: <code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>\nSENHA: <code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>\nLIMITE: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: $(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)" \
+                            --text "<b>✅ CRIADO COM SUCESSO ✅</b>\n\nUSUARIO: <code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>\nSENHA: <code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>\nLIMITE: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: $(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)" \
                             --parse_mode html
                         break
                     }
@@ -2003,7 +2016,7 @@ while :; do
                             --text "$(echo -e "❌ Opcao Invalida ❌\n\n⚠️ Ultilize apenas letras [EX: sim ou nao]")" \
                             --parse_mode html
                         ShellBot.sendMessage --chat_id ${message_from_id[$id]} \
-                            --text "<b>✅ CRIADO COM SUCESSO ✅</b>\n\nIP: $(cat /etc/IP)\nUSUARIO: <code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>\nSENHA: <code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>\nLIMITE: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: $(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)" \
+                            --text "<b>✅ CRIADO COM SUCESSO ✅</b>\n\nUSUARIO: <code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>\nSENHA: <code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>\nLIMITE: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: $(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)" \
                             --parse_mode html
                         break
                     }
@@ -2023,7 +2036,7 @@ while :; do
                             --reply_markup "$(ShellBot.ForceReply)"
                     } || {
                         ShellBot.sendMessage --chat_id ${message_from_id[$id]} \
-                            --text "<b>✅ CRIADO COM SUCESSO ✅</b>\n\nIP: $(cat /etc/IP)\nUSUARIO: <code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>\nSENHA: <code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>\nLIMITE: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: $(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)" \
+                            --text "<b>✅ CRIADO COM SUCESSO ✅</b>\n\nUSUARIO: <code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>\nSENHA: <code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>\nLIMITE: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: $(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)" \
                             --parse_mode html
                     }
                     ;;
@@ -2035,7 +2048,7 @@ while :; do
                             --text "$(echo -e "❌ Opcao Invalida ❌ \n\n⚠️ Ultilize apenas numeros [EX: 1]")" \
                             --parse_mode html
                         ShellBot.sendMessage --chat_id ${message_from_id[$id]} \
-                            --text "<b>✅ CRIADO COM SUCESSO ✅</b>\n\nIP: $(cat /etc/IP)\nUSUARIO: <code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>\nSENHA: <code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>\nLIMITE: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: $(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)" \
+                            --text "<b>✅ CRIADO COM SUCESSO ✅</b>\n\nUSUARIO: <code>$(awk -F " " '/Nome/ {print $2}' $CAD_ARQ)</code>\nSENHA: <code>$(awk -F " " '/Senha/ {print $2}' $CAD_ARQ)</code>\nLIMITE: $(awk -F " " '/Limite/ {print $2}' $CAD_ARQ)\nEXPIRA EM: $(awk -F " " '/Validade/ {print $2}' $CAD_ARQ)" \
                             --parse_mode html
                         >$CAD_ARQ
                         break
@@ -2327,7 +2340,7 @@ while :; do
                     _clientrev=$(cat $CAD_ARQ)
                     criar_rev $CAD_ARQ
                     ShellBot.sendMessage --chat_id ${message_from_id[$id]} \
-                        --text "✅ Criado com sucesso. ✅\n\n$(<$CAD_ARQ)\n\nBOT: @${message_reply_to_message_from_username}" \
+                        --text "✅ CRIADO COM SUCESSO. ✅\n\n$(<$CAD_ARQ)\n\nBOT: @${message_reply_to_message_from_username}" \
                         --parse_mode html
                     ;;
                     # REMOVE REVENDEDOR

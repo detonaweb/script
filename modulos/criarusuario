@@ -1,4 +1,6 @@
 #!/bin/bash
+clear
+[[ $(awk -F" " '{print $2}' /usr/lib/nzx) != "@Niltonjuniornzx" ]] && exit 0
 IP=$(cat /etc/IP)
 cor1='\033[41;1;37m'
 cor2='\033[44;1;37m'
@@ -248,7 +250,9 @@ fun_edithost() {
     fi
 }
 [[ ! -e /usr/lib/sshplus ]] && exit 0
+echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 tput setaf 7;tput setab 4;tput bold;printf '%30s%s%-15s\n' "Criar Usuário SSH";tput sgr0
+echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo ""
 echo -ne "\033[1;32mNome do usuário:\033[1;37m ";read username
 [[ -z $username ]] && {

@@ -1,6 +1,6 @@
 #!/bin/bash
-
 clear
+[[ $(awk -F" " '{print $2}' /usr/lib/nzx) != "@Niltonjuniornzx" ]] && exit 0
 
 fun_bar () {
 
@@ -62,7 +62,7 @@ fun_atts () {
 
   [[ -e /tmp/att ]] && rm /tmp/att
 
-	wget -c -P /home https://raw.githubusercontent.com/Niltonjuniorxd/scriptssh/main/versao
+	wget -c -P /home https://raw.githubusercontent.com/Niltonjuniornzx/scriptssh/main/versao
 
 	[[ -f "/home/versao" ]] && mv /home/versao /tmp/att
 
@@ -132,17 +132,17 @@ vrs2=$(sed -n '1 p' /tmp/att | sed -e 's/[^0-9]//ig')
 
     sleep 3
 
-    wget https://raw.githubusercontent.com/Niltonjuniorxd/scriptssh/main/Plus > /dev/null 2>&1
+    wget https://raw.githubusercontent.com/Niltonjuniornzx/scriptssh/main/att > /dev/null 2>&1
 
-    chmod +x Plus
+    chmod +x att
 
-    ./Plus
+    ./att
 
     clear
 
     echo -e "\033[1;32mSCRIPT ATUALIZADO COM SUCESSO\033[0m\n"
 
-    rm /tmp/Plus > /dev/null 2>&1
+    rm /tmp/att > /dev/null 2>&1
 
     echo -ne "\033[1;31mENTER \033[1;37mpara retornar ao \033[1;32mMENU!\033[0m"; read
 
