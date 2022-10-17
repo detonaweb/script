@@ -1787,7 +1787,7 @@ exit 0' >$RCLOCAL
 					sleep 2
 					fun_conexao
 				}
-				[[ ${msgg} != ?(+|-)+([a-zA-Z0-9-. ]) ]] && {
+				[[ ${msgg} ]] && {
 					echo -e "\n\033[1;31m[\033[1;37m!\033[1;31m]\033[1;37m EVITE CARACTERES ESPECIAIS\033[0m"
 					sleep 2
 					fun_socks

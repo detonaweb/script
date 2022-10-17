@@ -101,9 +101,43 @@ fun_badvpn() {
             sleep 2
             fun_badvpn
         fi
+    elif [[ "$resposta" = '0 | 00' ]]; then
+        echo ""
+        echo -e "\033[1;31mRetornando...\033[0m"
+        menu
+    else
+        echo ""
+        echo -e "\033[1;31mOpcao invalida !\033[0m"
+        sleep 1
+        fun_badvpn
+    fi
+}
+fun_badvpn
+
+            }
+            echo ""
+            echo -e "\033[1;32mIniciando o badvpn na porta \033[1;31m$porta\033[1;37m"
+            echo ""
+            fun_abrirptbad() {
+                sleep 1
+                screen -dms udpvpn /bin/badvpn-udpgw --listen-addr 127.0.0.1:$porta --max-clients 1000 --max-connections-for-client 5
+                sleep 1
+            }
+            fun_abrirptbad
+            echo ""
+            echo -e "\033[1;32mBadvpn ativado com sucesso\033[1;37m"
+            sleep 1
+            fun_badvpn
+        else
+            clear
+            echo -e "\033[1;31mFuncao indisponivel\n\n\033[1;37mAtive o badvpn primeiro !\033[1;37m"
+            sleep 1
+            fun_badvpn
+        fi
     elif [[ "$resposta" = '0' ]]; then
         echo ""
         echo -e "\033[1;31mRetornando...\033[0m"
+        sleep 1
         menu
     else
         echo ""
