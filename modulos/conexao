@@ -639,7 +639,7 @@ SCOLOR='\033[0m'
 					echo -e "\033[1;31mPorta invalida!"
 					sleep 2
 					clear
-					inst_ssl
+					fun_conexao
 				}
 				verif_ptrs $porta
 				echo -e "\033[1;32mALTERANDO PORTA SSL TUNNEL!"
@@ -654,7 +654,7 @@ SCOLOR='\033[0m'
 				netstat -nltp | grep 'stunnel4' >/dev/null && echo -e "\033[1;32mPORTA ALTERADA COM SUCESSO !" || echo -e "\033[1;31mERRO INESPERADO!"
 				sleep 3.5s
 				clear
-				inst_ssl
+				fun_conexao
 			}
 			[[ "$resposta" = '2' ]] && {
 				echo -e "\033[1;32mREMOVENDO O  SSL TUNNEL !\033[0m"
@@ -673,11 +673,11 @@ SCOLOR='\033[0m'
 				echo ""
 				echo -e "\033[1;32mSSL TUNNEL REMOVIDO COM SUCESSO!\033[0m"
 				sleep 3
-				inst_ssl
+				fun_conexao
 			} || {
 				echo -e "\033[1;31mRetornando...\033[0m"
 				sleep 3
-				inst_ssl
+				fun_conexao
 			}
 		else
 			clear
@@ -697,7 +697,7 @@ SCOLOR='\033[0m'
             elif [[ "$resposta" = '0' ]]; then
 				echo -e "\033[1;31mRetornando...\033[0m"
 				sleep 3
-				inst_ssl
+				fun_conexao
             else
 			echo ""
 			echo -e "\033[1;31mOpcao invalida !\033[0m"
@@ -716,7 +716,7 @@ SCOLOR='\033[0m'
 					echo -e "\033[1;31mPorta invalida!"
 					sleep 3
 					clear
-					inst_ssl
+					fun_conexao
 				}
 				verif_ptrs $porta
 				echo -e "\n\033[1;32mINSTALANDO O SSL TUNNEL !\033[1;37m"
@@ -770,12 +770,12 @@ rm -rf /root/stunnel.key
 				echo -e "\n\033[1;32mSSL TUNNEL INSTALADO COM SUCESSO !\033[1;31m PORTA: \033[1;37m$porta\033[0m"
 				sleep 3
 				clear
-				inst_ssl
+				fun_conexao
 			} || {
 				echo -e "\n\033[1;31mRetornando...\033[0m"
 				sleep 2
 				clear
-				inst_ssl
+				fun_conexao
 			}
 		fi
 	}
