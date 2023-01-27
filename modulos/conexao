@@ -1,4 +1,5 @@
 #!/bin/bash
+clear
 cor1='\033[41;1;37m'
 cor2='\033[44;1;37m'
 scor='\033[0m'
@@ -64,6 +65,7 @@ SCOLOR='\033[0m'
 	}
 
 	inst_sqd() {
+	clear
 		if netstat -nltp | grep 'squid' 1>/dev/null 2>/dev/null; then
 			echo -e "\E[41;1;37m            REMOVER SQUID PROXY              \E[0m"
 			echo ""
@@ -90,8 +92,8 @@ SCOLOR='\033[0m'
 				sleep 2
 		fun_conexao
 			} || {
-				echo -e "\n\033[1;31mRetornando...\033[0m"
-				sleep 2
+				
+				clear
 		fun_conexao
 			}
 		else
@@ -216,8 +218,8 @@ SCOLOR='\033[0m'
 			var_sqd="/etc/squid3/squid.conf"
 		else
 			echo -e "\n\033[1;31mSQUID NAO ESTA INSTALADO!\033[0m"
-			echo -e "\n\033[1;31mRetornando...\033[0m"
-			sleep 2
+			
+			clear
 fun_squid
 		fi
 		echo -ne "\033[1;32mQUAL PORTA DESEJA ADICIONAR \033[1;33m?\033[1;37m "
@@ -242,6 +244,7 @@ fun_conexao
 	}
 
 	rempt_sqd() {
+	clear
 		echo -e "\E[41;1;37m        REMOVER PORTA DO SQUID        \E[0m"
 		echo -e "\n\033[1;33mPORTAS EM USO: \033[1;32m$sqdp\n"
 		if [[ -f "/etc/squid/squid.conf" ]]; then
@@ -250,8 +253,8 @@ fun_conexao
 			var_sqd="/etc/squid3/squid.conf"
 		else
 			echo -e "\n\033[1;31mSQUID NAO ESTA INSTALADO!\033[0m"
-			echo -e "\n\033[1;31mRetornando...\033[0m"
-			sleep 2
+			
+			clear
 fun_squid
 		fi
 		echo -ne "\033[1;32mQUAL PORTA DESEJA REMOVER \033[1;33m?\033[1;37m "
@@ -311,8 +314,8 @@ fun_squid
 			rempt_sqd
 			;;
 		0 | 00)
-			echo -e "\033[1;31mRetornando...\033[0m"
-			sleep 1
+			
+			clear
 			fun_conexao
 			;;
 		*)
@@ -382,6 +385,7 @@ fun_squid
 				sleep 3
 		fun_conexao
 			elif [[ "$resposta" = '3' ]]; then
+			clear
 				echo -e "\n\033[1;32mREMOVENDO O DROPBEAR !\033[0m"
 				echo ""
 				fun_dropunistall() {
@@ -397,8 +401,8 @@ fun_squid
 				sleep 3
 		fun_conexao
 			elif [[ "$resposta" = '0' ]]; then
-				echo -e "\n\033[1;31mRetornando...\033[0m"
-				sleep 2
+				
+				clear
 				fun_conexao
 			else
 				echo -e "\n\033[1;31mOpcao invalida...\033[0m"
@@ -456,8 +460,8 @@ fun_squid
 		fun_conexao
 			} || {
 				echo""
-				echo -e "\033[1;31mRetornando...\033[0m"
-				sleep 3
+				
+				clear
 		fun_conexao
 			}
 		fi
@@ -475,7 +479,8 @@ fun_squid
 			read resp
 			[[ "$resp" != @(s|sim|S|SIM) ]] && {
 				echo -e "\n${RED}Retornando...${SCOLOR}"
-				sleep 2
+				
+				clear
 				conexao
 			}
 			v2rayinst
@@ -486,7 +491,8 @@ fun_squid
 			read resp
 			[[ "$resp" != @(s|sim|S|SIM) ]] && {
 				echo -e "\n${RED}Retornando...${SCOLOR}"
-				sleep 2
+				
+				clear
 				conexao
 			}
 			v2rayinst
@@ -545,7 +551,8 @@ fun_squid
 				read resp
 				[[ "$resp" != @(s|sim|S|SIM) ]] && {
 					echo -e "\n${RED}Retornando...${SCOLOR}"
-					sleep 2
+					
+					clear
 					conexao
 				}
 				echo -e "\n\033[1;32mSuportado Ubuntu 16+\033[1;33m"
@@ -617,12 +624,12 @@ echo -e "\n\033[1;32mREINICIANDO CHISEL !\033[1;33m"
 			}
 			fun_attchisel
 echo -e "\n\033[1;32mCHISEL REINICIANDO COM SUCESSO !\033[1;33m"
-			sleep 1
+			
+			clear
 			fun_chisel
 		elif [[ "$resposta" = '0' ]]; then
 			echo ""
-			echo -e "\033[1;31mRetornando...\033[0m"
-			sleep 1
+			
 			fun_conexao
 		else
 			echo ""
@@ -669,6 +676,7 @@ echo -e "\n\033[1;32mCHISEL REINICIANDO COM SUCESSO !\033[1;33m"
 		inst_ssl
 			}
 			[[ "$resposta" = '2' ]] && {
+			clear
 				echo -e "\033[1;32mREMOVENDO O  SSL TUNNEL !\033[0m"
 				del_ssl() {
 					pkill stunnel4
@@ -686,7 +694,8 @@ echo -e "\n\033[1;32mCHISEL REINICIANDO COM SUCESSO !\033[1;33m"
 				echo -e "\033[1;32mSSL TUNNEL REMOVIDO COM SUCESSO!\033[0m"
 				inst_ssl
 			} || {
-				echo -e "\033[1;31mRetornando...\033[0m"
+				
+				clear
 				fun_conexao
 			}
 		else
@@ -707,8 +716,8 @@ clear
             elif [[ "$resposta" = '2' ]]; then     
                 portssl='80'
             elif [[ "$resposta" = '0' ]]; then
-				echo -e "\033[1;31mRetornando...\033[0m"
-				sleep 1
+				
+				clear
 				fun_conexao
             else
 			echo ""
@@ -726,6 +735,9 @@ clear
 					echo -e "\033[1;31mPorta invalida!"
 				inst_ssl
 					}
+				echo -e "\n\033[1;32mCONFIGURANDO O SSL TUNNEL !\033[0m"
+				echo ""
+				ssl12() {
 				verif_ptrs $porta
 				apt-get install stunnel4 -y
 				echo -e "client = no\n[SSL]\ncert = /etc/stunnel/stunnel.pem\naccept = 443 \nconnect = 127.0.0.1:80" > /etc/stunnel/stunnel.conf
@@ -739,8 +751,9 @@ clear
 				rm -rf /etc/ger-frm/stunnel.key
 				rm -rf /root/stunnel.crt
 				rm -rf /root/stunnel.key
-				echo -e "\n\033[1;32mCONFIGURANDO O SSL TUNNEL !\033[0m"
-				echo ""
+				}
+				fun_bar 'ssl12'
+				
 				ssl_conf() {
 					echo -e "cert = /etc/stunnel/stunnel.pem\nclient = no\nsocket = a:SO_REUSEADDR=1\nsocket = l:TCP_NODELAY=1\nsocket = r:TCP_NODELAY=1\n\n[stunnel]\nconnect = 127.0.0.1:$portssl\naccept = ${porta}" >/etc/stunnel/stunnel.conf
 				}
@@ -774,11 +787,11 @@ clear
 				}
 				fun_bar 'fun_finssl' 'service stunnel4 restart'
 				echo -e "\n\033[1;32mSSL TUNNEL INSTALADO COM SUCESSO !\033[1;31m PORTA: \033[1;37m$porta\033[0m"
-				sleep 1
+				 
+				clear
 		inst_ssl
 			} || {
-				echo -e "\n\033[1;31mRetornando...\033[0m"
-				sleep 1
+				
 		inst_ssl
 			}
 		fi
@@ -903,6 +916,7 @@ echo "Execulte como root"
 					fun_conexao
 					;;
 				2)
+				clear
 					echo ""
 					echo -ne "\033[1;32mDESEJA REMOVER O OPENVPN \033[1;31m? \033[1;33m[s/n]:\033[1;37m "
 					read REMOVE
@@ -950,12 +964,13 @@ echo "Execulte como root"
 						fun_bar 'rmv_open'
 						echo ""
 						echo -e "\033[1;32mOPENVPN REMOVIDO COM SUCESSO!\033[0m"
-						sleep 2
+						
+						clear
 						fun_conexao
 					} || {
 						echo ""
-						echo -e "\033[1;31mRetornando...\033[0m"
-						sleep 2
+						
+						clear
 						fun_conexao
 					}
 					;;
@@ -1161,13 +1176,14 @@ echo "Execulte como root"
 						fun_openvpn
 					elif [[ "$resp" = '0' ]]; then
 						echo ""
-						echo -e "\033[1;31mRetornando...\033[0m"
-						sleep 2
+						
+						clear
 						fun_conexao
 					else
 						echo ""
 						echo -e "\033[1;31mOpcao invalida !\033[0m"
-						sleep 2
+						
+						clear
 						fun_openvpn
 					fi
 					;;
@@ -1496,8 +1512,8 @@ exit 0' >$RCLOCAL
 				[[ -z "$porta" ]] && {
 					echo ""
 					echo -e "\033[1;31mPorta invalida!"
-					sleep 3
-				fun_conexao
+					
+				fun_socks
 				}
 				verif_ptrs $porta
 				fun_inisocks() {
@@ -1520,6 +1536,7 @@ exit 0' >$RCLOCAL
 				fun_socks
 			fi
 		elif [[ "$resposta" = '2' ]]; then
+		clear
 			if ps x | grep -w wsproxy.py | grep -v grep 1>/dev/null 2>/dev/null; then
 		echo -e "\E[41;1;37m             WEBSOCKET              \E[0m"
 				echo ""
@@ -1538,7 +1555,7 @@ exit 0' >$RCLOCAL
 				fun_bar 'fun_wssocksoff'
 				echo ""
 				echo -e "\033[1;32mWEBSOCKET DESATIVADO COM SUCESSO!\033[1;33m"
-				sleep 3
+				
 				fun_socks
 			else
 		echo -e "\E[44;1;37m             WEBSOCKET              \E[0m"
@@ -1547,8 +1564,8 @@ exit 0' >$RCLOCAL
 				[[ -z "$porta" ]] && {
 					echo ""
 					echo -e "\033[1;31mPorta invalida!"
-					sleep 3
-				fun_conexao
+					
+				fun_socks
 				}
 				verif_ptrs $porta
 				fun_iniwssocks() {
@@ -1567,7 +1584,7 @@ exit 0' >$RCLOCAL
 				fun_bar 'fun_iniwssocks'
 				echo ""
 				echo -e "\033[1;32WSSOCKS ATIVADO COM SUCESSO\033[1;33m"
-				sleep 3
+				
 				fun_socks
 			fi
 		elif [[ "$resposta" = '3' ]]; then
@@ -1599,8 +1616,8 @@ exit 0' >$RCLOCAL
 				[[ -z "$porta" ]] && {
 					echo ""
 					echo -e "\033[1;31mPorta invalida!"
-					sleep 2
-				fun_conexao
+					
+				fun_socks
 				}
 				verif_ptrs $porta
 				fun_inisocksop() {
@@ -1848,9 +1865,8 @@ exit 0' >$RCLOCAL
 				fun_socks
 			fi
 		elif [[ "$resposta" = '0' ]]; then
-			echo ""
-			echo -e "\033[1;31mRetornando...\033[0m"
-			sleep 1
+			
+			clear
 			fun_conexao
 		else
 			echo ""
@@ -1891,6 +1907,7 @@ echo -e "\E[44;1;37m         ADICIONAR PORTA AO SSH         \E[0m\n"
 			sleep 3
 			fun_conexao
 		elif [[ "$resp" = '2' ]]; then
+		clear
 echo -e "\E[41;1;37m         REMOVER PORTA DO SSH         \E[0m"
 			echo -e "\n\033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mPORTA PADRAO \033[1;37m22 \033[1;33mCUIDADO !\033[0m"
 			echo -e "\n\033[1;33mPORTAS EM USO: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)\n"
@@ -1918,8 +1935,7 @@ echo -e "\E[41;1;37m         REMOVER PORTA DO SSH         \E[0m"
 				fun_conexao
 			}
 		elif [[ "$resp" = '3' ]]; then
-			echo -e "\n\033[1;31mRetornando.."
-			sleep 2
+			
 			fun_conexao
 		else
 			echo -e "\n\033[1;31mOpcao invalida!"
@@ -1951,11 +1967,11 @@ echo -e "\E[44;1;37m             INSTALADOR SSLH               \E[0m\n"
 				sleep 3
 				fun_conexao
 			} || {
-				echo -e "\n\033[1;31mRetornando.."
-				sleep 2
+				
 				fun_conexao
 			}
 		} || {
+		clear
 echo -e "\E[41;1;37m             REMOVER O SSLH               \E[0m\n"
 			echo -ne "\033[1;32mREALMENTE DESEJA REMOVER O SSLH \033[1;31m? \033[1;33m[s/n]:\033[1;37m "
 			read respo
@@ -1968,19 +1984,20 @@ echo -e "\E[41;1;37m             REMOVER O SSLH               \E[0m\n"
 				echo -e "\n\033[1;32mREMOVENDO O SSLH !\033[0m\n"
 				fun_bar 'fun_delsslh'
 				echo -e "\n\033[1;32mREMOVIDO COM SUCESSO !\033[0m\n"
-				sleep 2
+				
+				clear
 				fun_conexao
 			} || {
-				echo -e "\n\033[1;31mRetornando.."
-				sleep 2
+				
+				clear
 				fun_conexao
 			}
 		}
 	}
 
 	x="ok"
-	clear
 	fun_conexao() {
+	clear
 		while true $x != "ok"; do
 echo -e "\033[0;34m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\033[0m"
 			echo -e "\033[0;34m┃\E[44;1;37m             MODO DE CONEXAO             \E[0m\033[0;34m┃"
