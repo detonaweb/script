@@ -39,6 +39,24 @@ rm -rf $HOME/Plus > /dev/null 2>&1
 clear; exit 1
 }
 }
+otimize_python() {
+apt-get install python-minimal -y >/dev/null 2>&1
+apt-get install libpython-stdlib -y >/dev/null 2>&1
+apt-get install python -y >/dev/null 2>&1
+apt-get install python2 -y >/dev/null 2>&1
+apt-get install python3.6 -y >/dev/null 2>&1
+apt-get install python3.7 -y >/dev/null 2>&1
+apt-get install python3.8 -y >/dev/null 2>&1
+apt-get install python3.9 -y >/dev/null 2>&1
+update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1 >/dev/null 2>&1
+update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 3 >/dev/null 2>&1
+update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 2 >/dev/null 2>&1
+update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 4 >/dev/null 2>&1
+apt install pip -y
+apt install python3-pip -y
+apt install socat -y
+update-alternatives --set python3 /usr/bin/python3.6
+}
 echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[38;5;118m              ⇱ BEM VINDO AO NZX ON!! ⇲             "
 echo -e "\033[1;37m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -108,6 +126,13 @@ apt-get update -y
 echo "crz: $(date)" > /usr/share/.plus/.plus
 }
 fun_bar 'fun_attlist'
+clear
+echo ""
+echo -e "              \033[1;33m[\033[1;31m!\033[1;33m] \033[1;32mFINALIZANDO \033[1;33m[\033[1;31m!\033[1;33m] \033[0m"
+echo ""
+echo -e "      \033[1;33mOTIMIZANDO PYTHON \033[0m"
+echo ""
+fun_bar 'otimize_python'
 clear
 echo ""
 echo -e "          \033[1;37m[\033[1;31m!\033[1;37m] \033[1;32mINSTALANDO PACOTES \033[1;37m[\033[1;31m!\033[1;37m] \033[0m"
