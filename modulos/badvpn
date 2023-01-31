@@ -54,7 +54,7 @@ clear
 			clear
             inst_udp () {
                 cd $HOME
-                wget https://github.com/Niltonjuniorxd/SSHPLUSnzx/raw/nzxs/Install/badvpn-udpgw -o /dev/null
+                wget https://raw.githubusercontent.com/Niltonjuniorxd/scriptssh/main/Install/badvpn-udpgw -o /dev/null
                 mv -f $HOME/badvpn-udpgw /bin/badvpn-udpgw
                 chmod 777 /bin/badvpn-udpgw
             }

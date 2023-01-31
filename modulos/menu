@@ -185,8 +185,8 @@ echo -e "\n\E[38;5;33mFix checkuser\033[1;37mAGUARDE..."
 sleep 0.5
 clear
 mkdir /etc/rec > /dev/null 2>&1
-echo -e 'By: @KIRITO_SSH' > /etc/rec/licence
-echo -e 'By: @KIRITO_SSH' > /usr/lib/licence
+echo -e 'By: @Niltonjuniornzx' > /etc/rec/licence
+echo -e 'By: @Niltonjuniornzx' > /usr/lib/licence
 clear
 echo ""
 echo -e "\033[1;31m \033[1;37mAtiver o checkuser: \033[1;32m \033[0m"
@@ -299,9 +299,9 @@ done
 
 while true $x != "ok"
 do
-[[ -e /etc/Plus-torrent ]] && stsf=$(echo -e "\033[1;37m(\033[1;32m ✔ \033[1;37m) ") || stsf=$(echo -e "\033[1;37m(\033[1;31m ✖ \033[1;37m) ")
-stsbot=$(ps x | grep "bot_plus"|grep -v grep > /dev/null && echo -e "\033[1;37m(\033[1;32m ✔ \033[1;37m) " || echo -e "\033[1;37m(\033[1;31m ✖ \033[1;37m) ")
-stsbotteste=$(ps x | grep "bot_teste"|grep -v grep > /dev/null && echo -e "\033[1;37m(\033[1;32m ✔ \033[1;37m) " || echo -e "\033[1;37m(\033[1;31m ✖ \033[1;37m) ")
+[[ -e /etc/Plus-torrent ]] && stsf=$(echo -e "\033[1;37m(\033[1;32m ✓ \033[1;37m) ") || stsf=$(echo -e "\033[1;37m(\033[1;31m ✕ \033[1;37m) ")
+stsbot=$(ps x | grep "bot_plus"|grep -v grep > /dev/null && echo -e "\033[1;37m(\033[1;32m ✓ \033[1;37m) " || echo -e "\033[1;37m(\033[1;31m ✕ \033[1;37m) ")
+stsbotteste=$(ps x | grep "bot_teste"|grep -v grep > /dev/null && echo -e "\033[1;37m(\033[1;32m ✓ \033[1;37m) " || echo -e "\033[1;37m(\033[1;31m ✕ \033[1;37m) ")
 _swap1=$(free -h | grep -i swap | awk {'print $2'})
 if [[ "$(grep -c "Ubuntu" /etc/issue.net)" = "1" ]]; then
 system=$(cut -d' ' -f1 /etc/issue.net)
@@ -328,14 +328,14 @@ _hora=$(printf '%(%H:%M:%S)T')
 _onlin=$(printf '%-5s' "$_onli")
 _userexp=$(printf '%-5s' "$_expuser")
 _tuser=$(printf '%-5s' "$(awk -F: '$3>=1000 {print $1}' /etc/passwd | grep -v nobody | wc -l)")
-[[ -e /etc/Plus-torrent ]] && stsf=$(echo -e "\033[1;32m✔") || stsf=$(echo -e "\033[1;31m✖")
-stsbot=$(ps x | grep "bot_plus"|grep -v grep > /dev/null && echo -e "\033[1;32m✔" || echo -e "\033[1;31m✖")
-stsbotteste=$(ps x | grep "bot_teste"|grep -v grep > /dev/null && echo -e "\033[1;32m✔" || echo -e "\033[1;31m✖")
-stsl=$(ps x | grep "limiter"|grep -v grep > /dev/null && echo -e "\033[1;32m✔" || echo -e "\033[1;31m✖")
-stsu=$(ps x | grep "udpvpn"|grep -v grep > /dev/null && echo -e "\033[1;32m✔" || echo -e "\033[1;31m✖")
-stson=$(ps x | grep "onlineapp"|grep -v grep > /dev/null && echo -e "\033[1;32m✔" || echo -e "\033[1;31m✖")
-stsom=$(ps x | grep "shutdown -r 16:00"|grep -v grep > /dev/null && echo -e "\033[1;32m✔" || echo -e "\033[1;31m✖")
-autm=$(grep "menu;" /etc/profile > /dev/null && echo -e "\033[1;32m✔" || echo -e "\033[1;31m✖")
+[[ -e /etc/Plus-torrent ]] && stsf=$(echo -e "\033[1;32m✓") || stsf=$(echo -e "\033[1;31m✕")
+stsbot=$(ps x | grep "bot_plus"|grep -v grep > /dev/null && echo -e "\033[1;32m✓" || echo -e "\033[1;31m✕")
+stsbotteste=$(ps x | grep "bot_teste"|grep -v grep > /dev/null && echo -e "\033[1;32m✓" || echo -e "\033[1;31m✕")
+stsl=$(ps x | grep "limiter"|grep -v grep > /dev/null && echo -e "\033[1;32m✓" || echo -e "\033[1;31m✕")
+stsu=$(ps x | grep "udpvpn"|grep -v grep > /dev/null && echo -e "\033[1;32m✓" || echo -e "\033[1;31m✕")
+stson=$(ps x | grep "onlineapp"|grep -v grep > /dev/null && echo -e "\033[1;32m✓" || echo -e "\033[1;31m✕")
+stsom=$(ps x | grep "shutdown -r 16:00"|grep -v grep > /dev/null && echo -e "\033[1;32m✓" || echo -e "\033[1;31m✕")
+autm=$(grep "menu;" /etc/profile > /dev/null && echo -e "\033[1;32m✓" || echo -e "\033[1;31m✕")
 clear
 echo -e "\033[0;34m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\033[0m"
 [[ ! -e /tmp/att ]]  && {
@@ -349,8 +349,7 @@ echo -e "\033[0;34m┣━━━━━━━━━━━━━━━━━━━�
 echo -e "\033[0;34m┃\033[38;5;82mSistema              \033[1;37m| \033[38;5;82mMemória Ram           \033[1;37m| \033[38;5;82mProcessador    \033[0;34m┃"
 echo -e "\033[0;34m┃\033[38;5;196mOs: \033[1;37m$_system   | \033[38;5;196mTotal:\033[1;37m$_ram      | \033[38;5;196mNucleo: \033[1;37m$_core\033[0m  \033[0;34m┃"
 echo -e "\033[0;34m┃\033[38;5;196mHorário: \033[1;37m$_hora    | \033[38;5;196mEm Uso: \033[1;37m$_usor      | \033[38;5;196mEm Uso: \033[1;37m$_usop\033[0m  \033[0;34m┃"
-echo -e "\033[0;34m┃\033[38;5;51mBand Vpn \033[1;37m( $stsu \033[1;37m) \033[1;37m      | \033[38;5;51mBot Telegram \033[1;37m( $stsbot \033[1;37m) \033[1;37m   | \033[38;5;51mLimiter \033[1;37m( $stsl \033[1;37m)  \033[0;34m┃"
-echo -e "\033[0;34m┃\033[38;5;202mConectados:\033[1;37m $_onlin    | \033[38;5;202mVencidos: \033[1;37m$_userexp       | \033[38;5;202mCriados: \033[1;37m$_tuser\033[0m \033[0;34m┃"
+echo -e "\033[0;34m┃\033[38;5;226mConectados:\033[1;37m $_onlin    | \033[38;5;226mVencidos: \033[1;37m$_userexp       | \033[38;5;226mCriados: \033[1;37m$_tuser\033[0m \033[0;34m┃"
 echo -e "\033[0;34m┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫\033[0m"
 echo -e "\033[0;34m┃\E[38;5;196m|\E[38;5;33m01\E[38;5;196m|\033[1;37m ➜ \033[1;37mCRIAR LOGIN                  \E[38;5;196m|\E[38;5;33m15\E[38;5;196m|\033[1;37m ➜ \033[1;37mOTIMIZAR           \033[0;34m┃"
 echo -e "\033[0;34m┃\E[38;5;196m|\E[38;5;33m02\E[38;5;196m|\033[1;37m ➜ \033[1;37mCRIAR LOGIN TESTE            \E[38;5;196m|\E[38;5;33m16\E[38;5;196m|\033[1;37m ➜ \033[1;37mBACKUP             \033[0;34m┃"
