@@ -52,14 +52,14 @@ echo""
 echo -e "\E[44;1;196m USUARIO VAZIO OU INVÁLIDO! \E[0m  "
 echo""
 	echo -e "\033[1;31mRETORNANDO...\033[0m"
-	sleep 1.5s
+	sleep 1
 	remover
 elif [[ -z $user ]]; then
 echo""
 echo -e "\E[44;1;196m USUARIO VAZIO OU INVÁLIDO! \E[0m  "
 echo""
 	echo -e "\033[1;31mRETORNANDO...\033[0m"
-	sleep 1.5s
+	sleep 1
 	remover
 else
 	if cat /etc/passwd |grep -w $user > /dev/null; then
@@ -86,7 +86,7 @@ else
 				remove_ovp $user
 		    fi
 	echo -e "\n\033[1;31mRETORNANDO...\033[0m"
-	sleep 1.5s
+	sleep 1
 	remover
 		else
 		    echo ""
@@ -112,7 +112,7 @@ echo -e "\E[44;1;37mREMOVER USUARIO SSH  \E[0m"
 	echo -ne "\033[1;33mREALMENTE DESEJA REMOVER TODOS USUARIOS \033[1;37m[s/n]: "; read opc	
 	if [[ "$opc" = "n" ]]; then	
 	echo -e "\n\033[1;31mRETORNANDO...\033[0m"
-	sleep 1.5s
+	sleep 1
 	clear
 	remover
 	fi
@@ -129,7 +129,7 @@ echo -e "\E[44;1;37mREMOVER USUARIO SSH  \E[0m"
         rm *.zip > /dev/null 2>&1
 		echo -e "\n\033[1;32mUSUARIOS REMOVIDOS COM SUCESSO!\033[0m"
 		echo -e "\n\033[1;31mRETORNANDO...\033[0m"
-		sleep 1.5s
+		sleep 1
 				else
 			echo ""
 			echo -e "\033[1;31mOpcao invalida !\033[0m"
@@ -137,16 +137,10 @@ echo -e "\E[44;1;37mREMOVER USUARIO SSH  \E[0m"
 remover
 fi
 	fi
-        elif [[ "$resposta" = '0' ]]; then
-			echo ""
-			echo -e "\033[1;31mRetornando...\033[0m"
-			sleep 1
-			menu
-		else
-			echo ""
-			echo -e "\033[1;31mOpcao invalida !\033[0m"
-			sleep 1
-remover
+if [[ "$resp" = "0" ]]; then
+	menu
+else
+	echo -e "\n\033[1;31mOpcao invalida !\033[0m"
+	sleep 1.5s
+	remover
 fi
-}
-remover
