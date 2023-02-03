@@ -130,10 +130,6 @@ echo -e "\E[44;1;37mREMOVER USUARIO SSH  \E[0m"
 		echo -e "\n\033[1;32mUSUARIOS REMOVIDOS COM SUCESSO!\033[0m"
 		echo -e "\n\033[1;31mRETORNANDO...\033[0m"
 		sleep 1
-				else
-			echo ""
-			echo -e "\033[1;31mOpcao invalida !\033[0m"
-			sleep 1
 remover
 fi
 	fi
@@ -141,6 +137,6 @@ if [[ "$resp" = "0" ]]; then
 	menu
 else
 	echo -e "\n\033[1;31mOpcao invalida !\033[0m"
-	sleep 1.5s
+	sleep 1
 	remover
 fi
