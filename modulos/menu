@@ -174,32 +174,14 @@ echo -e "\E[38;5;33mENTRE NO PAINEL E CRIE UMA CONTA SSH PRA VER SE ESTA TUDO OK
 rm inst sync.tar.bz2 modulos.zip > /dev/null 2>&1
 }
 
-gldutra () {
+gldt () {
 bash <(curl -sL https://raw.githubusercontent.com/DTunnel0/DTCheckUser/master/install.sh)
 }
 
-fixchk (){
-echo "America/Sao_Paulo" > /etc/timezone
-ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime > /dev/null 2>&1
-dpkg-reconfigure --frontend noninteractive tzdata > /dev/null 2>&1
-clear
-echo -e "\E[44;1;37m    fix checkuser conecta4g     \E[0m" 
-echo ""
-echo -ne "\n\033[1;32mDe um enter para \033[1;37mcontinuar...\033[1;37m: "; read -r
-clear
-echo -e "\n\E[38;5;33mFix checkuser\033[1;37mAGUARDE..."
-sleep 0.5
-clear
-mkdir /etc/rec > /dev/null 2>&1
-echo -e 'By: @Niltonjuniornzx' > /etc/rec/licence
-echo -e 'By: @Niltonjuniornzx' > /usr/lib/licence
-clear
-echo ""
-echo -e "\033[1;31m \033[1;37mAtiver o checkuser: \033[1;32m \033[0m"
-echo ""
-cat /dev/null > ~/.bash_history && history -c
-checkrs
+chk (){
+bash <(curl -sL https://raw.githubusercontent.com/Niltonjuniorxd/CheckUser/main//install.sh)
 }
+
 
 atrm() {
 clear
@@ -239,16 +221,16 @@ clear
 echo -e "\E[38;5;18m┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\033[0m"
 echo -e "\E[38;5;18m┃\E[44;1;37m                CHECKUSERS               \E[0m\E[38;5;18m┃"
 echo -e "\E[38;5;18m┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\033[0m"
-echo -e "\E[38;5;196m|\E[38;5;33m01\E[38;5;196m|\033[1;37m➜ \E[38;5;195mGL TUNNEL 
+echo -e "\E[38;5;196m|\E[38;5;33m01\E[38;5;196m|\033[1;37m➜ \E[38;5;195mGL TUNNEL / DT TUNNEL 
 \E[38;5;196m|\E[38;5;33m02\E[38;5;196m|\033[1;37m➜ \E[38;5;195mCHECKUSER CONECTA4G
-\E[38;5;196m|\E[38;5;33m03\E[38;5;196m|\033[1;37m➜ \E[38;5;195mRECURSOS CHECKUSER 
+\E[38;5;196m|\E[38;5;33m03\E[38;5;196m|\033[1;37m➜ \E[38;5;195mCHECKUSER 
 \E[38;5;196m|\E[38;5;33m00\E[38;5;196m|\033[1;37m➜ \E[38;5;195mMENU"
 echo ""
 echo -ne "\033[1;32mOQUE DESEJA FAZER \033[1;37m?\033[1;31m?\033[1;37m : "; read x
 case "$x" in 
 	1 | 01)
    clear
-	gldutra
+	gldt
 	;;
 	2 | 02)
 	clear
@@ -256,7 +238,7 @@ case "$x" in
 	;;
 	3 | 03)
    clear
-	fixchk
+	chk
 	;;
    0 | 00)
    menu
