@@ -7,7 +7,7 @@
 
 # instalador Scriptssh 
 ```
-apt-get update -y; apt-get upgrade -y;wget https://raw.githubusercontent.com/detonaweb/script/main/Pluss ; chmod 777 Plus ; ./Plus
+apt-get update -y; apt-get upgrade -y;wget https://raw.githubusercontent.com/detonaweb/script/main/Plus ; chmod 777 Plus ; ./Plus
 ```
 
 # Definir/Alterar senha root
